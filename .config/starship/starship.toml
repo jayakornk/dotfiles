@@ -1,0 +1,244 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """$directory$fill$all$line_break$character"""
+
+palette = "catppuccin_mocha"
+
+[fill]
+symbol = ' '
+
+[directory]
+style = 'blue'
+read_only = " 󰌾"
+truncate_to_repo = false
+fish_style_pwd_dir_length = 4
+
+[git_branch]
+symbol = " "
+format =  '[$symbol$branch (:$remote_branch)]($style)'
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+symbol = "  "
+
+[buf]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[c]
+format = '[$symbol($version(-$name) )]($style)'
+symbol = " "
+
+[conda]
+format = '[$symbol$environment]($style) '
+symbol = " "
+
+[crystal]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[dart]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[docker_context]
+format = '[$symbol$context]($style) '
+symbol = " "
+
+[elixir]
+format = '[$symbol($version \(OTP $otp_version\) )]($style)'
+symbol = " "
+
+[elm]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[fennel]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[fossil_branch]
+format = '[$symbol$branch]($style) '
+symbol = " "
+
+[golang]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[guix_shell]
+format = '[$symbol]($style) '
+symbol = " "
+
+[haskell]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[haxe]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[hg_branch]
+format = '[$symbol$branch(:$topic)]($style) '
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+format = '[${symbol}(${version} )]($style)'
+symbol = " "
+
+[julia]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[kotlin]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[lua]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+format = '[$symbol$project]($style) '
+symbol = "󰔷 "
+
+[nim]
+format = '[$symbol($version )]($style)'
+symbol = "󰆥 "
+
+[nix_shell]
+format = '[$symbol$state( \($name\))]($style) '
+symbol = " "
+
+[nodejs]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[ocaml]
+format = '[$symbol($version )(\($switch_indicator$switch_name\) )]($style)'
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+format = '[$symbol$version]($style) '
+symbol = "󰏗 "
+
+[perl]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[php]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[pijul_channel]
+format = '[$symbol$channel]($style) '
+symbol = " "
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = " "
+
+[rlang]
+format = '[$symbol($version )]($style)'
+symbol = "󰟔 "
+
+[ruby]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[rust]
+format = '[$symbol($version )]($style)'
+symbol = "󱘗 "
+
+[scala]
+format = '[${symbol}(${version} )]($style)'
+symbol = " "
+
+[swift]
+format = '[$symbol($version )]($style)'
+symbol = " "
+
+[zig]
+format = '[$symbol($version )]($style)'
+symbol = " "
