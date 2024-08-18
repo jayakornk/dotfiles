@@ -58,6 +58,10 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+export LANG=en_US.UTF-8
+
+export EDITOR=/opt/homebrew/bin/nvim
+
 export GPG_TTY=\$(tty)
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
