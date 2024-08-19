@@ -5,55 +5,8 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        -- Vim
-        "vim",
-        "lua",
-        "vimdoc",
-        -- Web
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "vue",
-        "go",
-        "json",
-        -- Mobile
-        "dart",
-      },
-    },
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "typescript-language-server",
-        "tailwindcss-language-server",
-        "vue-language-server",
-        "prettierd",
-        "goimports",
-        "gopls",
-        "json-lsp",
-      },
-    },
-  },
-
   {
     "christoomey/vim-tmux-navigator",
-    -- lazy = false,
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
@@ -67,6 +20,60 @@ return {
       { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-treesitter/nvim-treesitter",
+    },
+    cmd = "Telescope",
+    opts = function()
+      local actions = require "telescope.actions"
+      local options = require "nvchad.configs.telescope"
+
+      options.defaults.layout_config.horizontal.prompt_position = "bottom"
+      options.defaults.mappings.i = {
+        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+        ["<C-j>"] = actions.move_selection_next, -- move to next result
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      }
+      table.insert(options.extensions_list, "fzf")
+
+      return options
+    end,
+    config = function(_, opts)
+      local telescope = require "telescope"
+      telescope.setup(opts)
+
+      -- load extensions
+      for _, ext in ipairs(opts.extensions_list) do
+        telescope.load_extension(ext)
+      end
+    end,
+  },
+
+  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+      },
+      auto_install = true,
     },
   },
 }
