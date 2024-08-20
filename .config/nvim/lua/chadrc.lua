@@ -16,7 +16,7 @@ M.base46 = {
 
 M.ui = {
   statusline = {
-    -- theme = "minimal",
+    theme = "minimal",
     separator_style = "round",
   },
   nvdash = {
