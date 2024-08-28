@@ -27,21 +27,32 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 # remove broken symlinks
 alias clsym="find -L . -name . -o -type d -prune -o -type l -exec rm {} +"
 
-# if [[ -x "$(command -v lsd)" ]]; then
-#   alias ll="lsd -lg"
-#   alias l="lsd -Alg"
-# else
-#   alias l="ls -lah ${colorflag}"
-#   alias ll="ls -lFh ${colorflag}"
-# fi
+# use eza if available
+if [[ -x "$(command -v eza)" ]]; then
+  alias ll="eza --icons --git --long"
+  alias l="eza --icons --git --all --long"
+  alias lt="eza --tree --level=2 --long --icons --git"
+else
+  alias l="ls -lah ${colorflag}"
+  alias ll="ls -lFh ${colorflag}"
+fi
 
-# alias la="ls -AF ${colorflag}"
-# alias lld="ls -l | grep ^d"
-
-# Eza
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
+alias la="ls -AF ${colorflag}"
+alias lld="ls -l | grep ^d"
 
 alias rmf="rm -rf"
+
+# tmux aliases
+alias ta='tmux attach'
+alias tls='tmux ls'
+alias tat='tmux attach -t'
+alias tns='tmux new-session -s'
+
 alias vim="nvim"
 alias vi="nvim"
+
+# Kickstart Nvim
+alias ks='NVIM_APPNAME="nvim-kickstart" nvim'
+
+# JayakornK Nvim
+alias jk='NVIM_APPNAME="nvim-jayakornk" nvim'
