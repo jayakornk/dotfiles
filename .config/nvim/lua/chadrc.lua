@@ -1,35 +1,50 @@
--- This file needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/ui/blob/v2.5/lua/nvconfig.lua
-
----@type ChadrcConfig
 local M = {}
 
 M.base46 = {
-  theme = "catppuccin",
+  theme = 'catppuccin',
   transparency = true,
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
+  hl_override = {
+    FoldColumn = { bg = 'NONE' },
+  },
+  theme_toggle = { 'onedark', 'catppuccin' },
 }
 
 M.ui = {
-  statusline = {
-    theme = "minimal",
-    separator_style = "round",
-  },
-  nvdash = {
-    load_on_startup = true,
-    buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
-      { "󰁯  Restore Session", "Spc w r", "SessionRestore" },
+  cmp = {
+    icons_left = true,
+    style = 'default',
+    format_colors = {
+      tailwind = true, -- will work for css lsp too
     },
+  },
+  statusline = {
+    theme = 'minimal',
+    separator_style = 'round',
+  },
+}
+
+M.nvdash = {
+  load_on_startup = true,
+  buttons = {
+    { txt = '  Find File', keys = 'Spc f f', cmd = 'Telescope find_files' },
+    { txt = '  Recent Files', keys = 'Spc f r', cmd = 'Telescope oldfiles' },
+    { txt = '󰈭  Find Word', keys = 'Spc s g', cmd = 'Telescope live_grep' },
+    { txt = '󱥚  Themes', keys = 'Spc t h', cmd = ":lua require('nvchad.themes').open()" },
+    { txt = '  Mappings', keys = 'Spc l h', cmd = 'NvCheatsheet' },
+
+    { txt = '─', hl = 'NvDashLazy', no_gap = true, rep = true },
+
+    {
+      txt = function()
+        local stats = require('lazy').stats()
+        local ms = math.floor(stats.startuptime) .. ' ms'
+        return '  Loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms
+      end,
+      hl = 'NvDashLazy',
+      no_gap = true,
+    },
+
+    { txt = '─', hl = 'NvDashLazy', no_gap = true, rep = true },
   },
 }
 
