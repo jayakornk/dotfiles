@@ -19,6 +19,7 @@ return {
       lsp_zero.default_keymaps {
         buffer = bufnr,
         preserve_mappings = false,
+        exclude = { 'gs' },
       }
 
       local map = function(keys, func, opts)
@@ -29,14 +30,14 @@ return {
       end
 
       map('<leader>ll', '<cmd>LspInfo<cr>', { desc = 'Lsp Info' })
-      map('gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
-      map('gr', vim.lsp.buf.references, { desc = 'References', nowait = true })
-      map('gI', vim.lsp.buf.implementation, { desc = 'Goto Implementation' })
-      map('gy', vim.lsp.buf.type_definition, { desc = 'Goto T[y]pe Definition' })
-      map('gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
-      map('K', vim.lsp.buf.hover, { desc = 'Hover' })
-      map('gK', vim.lsp.buf.signature_help, { desc = 'Signature Help' })
-      map('<c-k>', vim.lsp.buf.signature_help, { desc = 'Signature Help', mode = 'i' })
+      -- map('gd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
+      -- map('gr', vim.lsp.buf.references, { desc = 'References', nowait = true })
+      -- map('gI', vim.lsp.buf.implementation, { desc = 'Goto Implementation' })
+      -- map('gy', vim.lsp.buf.type_definition, { desc = 'Goto T[y]pe Definition' })
+      -- map('gD', vim.lsp.buf.declaration, { desc = 'Goto Declaration' })
+      -- map('K', vim.lsp.buf.hover, { desc = 'Hover' })
+      -- map('gK', vim.lsp.buf.signature_help, { desc = 'Signature Help' })
+      -- map('<c-k>', vim.lsp.buf.signature_help, { desc = 'Signature Help', mode = 'i' })
       map('<leader>la', vim.lsp.buf.code_action, { desc = 'Code Action', mode = { 'n', 'v' } })
       map('<leader>lc', vim.lsp.codelens.run, { desc = 'Run Codelens', mode = { 'n', 'v' } })
       map('<leader>lC', vim.lsp.codelens.refresh, { desc = 'Refresh & Display Codelens', mode = { 'n' } })
@@ -73,6 +74,7 @@ return {
     local servers = {
       'lua_ls',
       'gopls',
+      -- 'kulala_ls',
     }
 
     local ensure_installed = servers
@@ -81,10 +83,14 @@ return {
       'gofumpt',
     })
 
+    -- require('lspconfig').kulala_ls.setup {
+    --   capabilities = lsp_capabilities,
+    -- }
+
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
-      -- ensure_installed = {},
+      -- ensure_installed = { 'kulala_ls' },
       handlers = {
         -- this first function is the "default handler"
         -- it applies to every language server without a "custom handler"
@@ -98,6 +104,9 @@ return {
             end,
           }
         end,
+        -- kulala_ls = function()
+        --   require('lspconfig').kulala_ls.setup {}
+        -- end,
       },
     }
   end,

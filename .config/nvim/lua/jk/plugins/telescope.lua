@@ -129,7 +129,7 @@ return {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       defaults = {
-        file_ignore_patterns = { '^%.git[/\\]', '[/\\]%.git[/\\]' },
+        -- file_ignore_patterns = { '^%.git[/\\]', '[/\\]%.git[/\\]' },
         prompt_prefix = get_icon('Selected', 1),
         selection_caret = ' ',
         -- open files in the first window that is an actual file.

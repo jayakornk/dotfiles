@@ -7,6 +7,8 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 
 -------------------------------------- options ------------------------------------------
+o.termguicolors = true
+
 o.laststatus = 3
 o.showmode = false
 

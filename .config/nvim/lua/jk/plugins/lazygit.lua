@@ -17,14 +17,11 @@ return {
   -- order to load the plugin when the command is run for the first time
   keys = {
     { '<leader>gg', '<cmd>LazyGitCurrentFile<cr>', desc = 'LazyGit' },
-    {
-      '<leader>gl',
-      function()
-        require('nvchad.term').toggle { pos = 'float', id = 'fa', cmd = 'lazygit log' }
-      end,
-      desc = 'LazyGit',
-    },
+    { '<leader>gl', '<cmd>LazyGitFilter<cr>', desc = 'LazyGit log' },
   },
+  -- init = function()
+  --   vim.g.lazygit_floating_window_use_plenary = 1 -- use plenary.nvim to manage floating window if available
+  -- end,
   -- config = function()
   -- 	require("telescope").load_extension("lazygit")
   -- end,
